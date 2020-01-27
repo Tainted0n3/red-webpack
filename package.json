@@ -1,0 +1,9 @@
+{
+  "name": "red-webpack",
+  "version": "1.0.0",
+  "description": "webpack base point",
+  "main": "index.js",
+  "author": "Tainted0n3 <t4int3d@googlemail.com>",
+  "license": "MIT",
+  "private": true
+}
