@@ -5,5 +5,10 @@
   "main": "index.js",
   "author": "Tainted0n3 <t4int3d@googlemail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
 }
