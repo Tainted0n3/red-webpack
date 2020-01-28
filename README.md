@@ -20,11 +20,11 @@ This project includes:
 
 **@babel/cli** - Not neccessary as we are using webpack to coordinate the build process.
 
-**@babel/polyfill** - Again not necessary as we have not specified an application for our application.
+**@babel/polyfill** - Again not necessary as we have not yet specified an application for our application.
 
-**eslint** - ESLint has many configuration options itself including whether we are a CommonJS or module based application. Are we a Node app or a Web app? Are we using TypeScript? What about presets like AirBnB or Google? Do we want to just help with syntax or do we want to enforce coding standards? As we have not yet specified any roles for this application then there is no need to burden it and it's developers with meaningless, endless linting errors.
+**eslint** - ESLint has many configuration options itself including whether we are a CommonJS or module based application. Are we a Node app or a Web app? Are we using TypeScript? What about presets like AirBnB or Google? Do we just want help with syntax or do we want to enforce coding standards? As we have not yet specified any roles for this application then there is no need to burden it and it's developers with meaningless, endless linting errors.
 
-**jest** - Seriously considering this one. Testing is becomming more ubiquitous (as it should be) and Jest is reliable and cooperates well with babel but has other considerations to take into account when using it alongside webpack. **i.e We have to transpile our modules into CommonJS instead but only in the test environment**
+**jest** - Seriously considering this one. With testing becoming more ubiquitous by the day (as it should be) Jest is reliable and cooperates well with babel but has other considerations to take into account when using it alongside webpack. **i.e We have to transpile our modules into CommonJS instead but only in the test environment**
 
 - We would need to handle static assets for setting up mocks.
 - Mocking CSS modules with with identity-obj-proxy.
@@ -53,9 +53,7 @@ Run one of the following npm scripts to get up and running:
 
 # Configuration and design decisions
 
-Configuration files in JS format rather than JSON, this lets us export values so they are visible elsewhere during the setup.
-
-Within `webpack.config.js` and `babel.config.js`
+Configuration files for babel and webpack in JS format rather than JSON, this lets us export values so they are visible elsewhere during the setup within `webpack.config.js` and `babel.config.js`
 
 ## webpack.config.js
 
