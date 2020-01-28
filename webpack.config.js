@@ -1,5 +1,8 @@
 const path = require('path');
 
+/* Our top level directory for the build process */
+const distributionDirectory = path.resolve(__dirname, 'dist');
+
 /* Plugins */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -20,7 +23,7 @@ module.exports = (args, mode) => {
     mode: mode,
     entry: './src/app.js',
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: distributionDirectory,
       filename: 'bundle.js'
     },
     module: {
@@ -34,7 +37,7 @@ module.exports = (args, mode) => {
     },
     plugins: [new CleanWebpackPlugin()],
     devServer: {
-      contentBase: path.resolve(__dirname, 'dist'),
+      contentBase: distributionDirectory,
       writeToDisk: true,
       open: true,
       index: 'index.html'
