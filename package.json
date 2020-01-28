@@ -1,12 +1,24 @@
 {
   "name": "red-webpack",
   "version": "1.0.0",
-  "description": "webpack base point",
-  "main": "index.js",
+  "description": "Webpack starting point",
+  "main": "src/app.js",
   "author": "Tainted0n3 <t4int3d@googlemail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "prod:build": "webpack --mode production --config ./webpack.config.js",
+    "prod:serve": "webpack-dev-server --mode production  --config ./webpack.config.js",
+    "dev:build": "webpack --mode development --config ./webpack.config.js",
+    "dev:watch": "webpack --watch --mode development --config ./webpack.config.js",
+    "dev:serve": "webpack-dev-server --mode development --config ./webpack.config.js"
+  },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "npm-run-all": "^4.1.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
