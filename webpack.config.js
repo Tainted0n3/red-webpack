@@ -14,7 +14,7 @@ const target = 'node'; // ||'web'
 // This is used by both webpack and the devServer
 const outputPath = path.resolve(__dirname, 'dist');
 
-// Chnaging this values change the name of the default file
+// Changing this values change the name of the default file
 // served by html-webpack-plugin as well as the dev server
 // to know what to serve
 const indexFilename = 'index.html';

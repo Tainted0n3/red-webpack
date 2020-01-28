@@ -38,7 +38,7 @@ This project includes:
 
 As with ESlint, Jest seems to be more of a specific choice. There are alot of defaults that would require looking into on an app by app basis, on these grounds I have opted out of including Jest in the base.
 
-**TypeScript** - Yes but not here, once this repo is fundamentally sound, there will be little reason to modify it further, other than some minor tweaks to some defaults, so I plan to add either a TypeScript branch or create a second repo based off of this one and implement it there. Jest can then be implemented in either environment as needed by the application.
+**TypeScript** - Yes but not here, once this repo is fundamentally sound, there will be little reason to modify it further, other than some minor tweaks to some defaults, so I plan to add either a TypeScript branch or create a second repo based off of this one and implement it there. Jest can then be implemented in either environment as needed by the devloper.
 
 # Getting started
 
@@ -99,8 +99,10 @@ The only module installed and cofigured to run is `babel-loader`.
 
 The dev server is currently set to serve content from the same directory specified in `output.path`.
 
-- This has been consolidated into `const distributionDirectory` so that it can be used by both `output` and `devServer`.
-  `writeToDisk` is set to `true` to aid development, this stops the dev server from running the built code cached in memory.
+- This has been consolidated into the variable `distributionDirectory` so that it can be used by both `output` and `devServer`.
+- `writeToDisk` is set to `true` to aid development, this stops the dev server from running the built code cached in memory.
+- `open` defaults to true if the `target` is `web` otherwise false
+- `index` defaults to the value stored in `indexFilename` if `target` is `web` otherwise `undefined`
 
 ## babel.config.js
 
@@ -110,18 +112,14 @@ I have set caching to `.never()` by default, to not cache this config, and re-ex
 
 Uses `@babel/preset-env` to allow us to use all the latest and greatest JavaScript functionality within our codebase.
 
-`targets.browsers` **STC**. For full details see [browserlist integration](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration).
-
-Current value:
+`targets.browsers` is currently set using the preset displayed below. **STC**. For full details see [browserlist integration](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration).
 
 ```javascript
 const presets = [
   [
     '@babel/preset-env',
     {
-      targets: {
-        browsers: ['last 2 versions', 'safari >= 7']
-      }
+      targets: '> 0.25%, not dead'
     }
   ]
 ];
@@ -142,7 +140,7 @@ These are features that have come to mind during the implemenation process that 
 
   - Old format `yarn [env]:[action]` i.e `yarn prod:build`
   - New format `yarn [action]-[env]` i.e `yarn build-p`. Abbriviate `[env]` to a single character
-  - Key:
+  - [env] Key:
     - `-p` = production
     - `-d` = development
     - `-t` = test (Not currently utilised but a good standard).
