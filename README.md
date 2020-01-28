@@ -8,6 +8,7 @@ This project includes:
   - Includes webpack-cli for launching webpack via the npm scripts.
   - As well as webpack-dev-server for obvious reasons.
   - Also clean-webpack-plugin for keeping the directory clean between builds.
+  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin#plugins) as this can be used with multiple other plugins with zero configuration required.
 - Babel 7
   - Includes @babel/core and @babel/preset-env to target the latest and greatest Javascript has to offer.
   - Also babel-loader for Webpack integration.
@@ -21,6 +22,8 @@ This project includes:
 **@babel/cli** - Not neccessary as we are using webpack to coordinate the build process.
 
 **@babel/polyfill** - Again not necessary as we have not yet specified an application for our application.
+
+**Automatically deliver CSS** - Simply put no. There are a multitude of ways I could pick to deliver CSS, statically or dynamically thorugh scripts and imports. This is all project specific and therefore will be left up to the developer to integrate at will.
 
 **eslint** - ESLint has many configuration options itself including whether we are a CommonJS or module based application. Are we a Node app or a Web app? Are we using TypeScript? What about presets like AirBnB or Google? Do we just want help with syntax or do we want to enforce coding standards? As we have not yet specified any roles for this application then there is no need to burden it and it's developers with meaningless, endless linting errors.
 
@@ -83,9 +86,14 @@ The only module installed and cofigured to run is `babel-loader`.
 
 ### Plugins
 
-Similarly the only plugin installed in the `clean-webpack-plugin`.
+`clean-webpack-plugin`.
 
 - Removes all files inside of the folder defined in `output.path` as well as any unused webpack assets.
+
+`html-webpack-plugin`
+
+- Uses the current `target` to determine whether or not to add itself to the build pipeline.
+- Uses the current `mode` to set defaults for minify in production and development.
 
 ### Dev Server
 
@@ -139,4 +147,4 @@ These are features that have come to mind during the implemenation process that 
     - `-d` = development
     - `-t` = test (Not currently utilised but a good standard).
 
-- Add the ability to copy and serve an `index.html` from the root if the above `type` is set to `web` []
+- Add the ability to copy and serve an `index.html` from the root if the above `type` is set to `web` - I've chosen `html-webpack-plugin` [x]
