@@ -7,11 +7,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prod:build": "webpack --mode production --config ./webpack.config.js",
-    "prod:serve": "webpack-dev-server --mode production  --config ./webpack.config.js",
-    "dev:build": "webpack --mode development --config ./webpack.config.js",
-    "dev:watch": "webpack --watch --mode development --config ./webpack.config.js",
-    "dev:serve": "webpack-dev-server --mode development --config ./webpack.config.js"
+    "build-p": "webpack --mode production --config ./webpack.config.js",
+    "serve-p": "webpack-dev-server --mode production  --config ./webpack.config.js",
+    "build-d": "webpack --mode development --config ./webpack.config.js",
+    "watch-d": "webpack --watch --mode development --config ./webpack.config.js",
+    "serve-d": "webpack-dev-server --mode development --config ./webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",

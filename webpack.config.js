@@ -1,10 +1,15 @@
 const path = require('path');
 
-/* Our top level directory for the build process */
-const distributionDirectory = path.resolve(__dirname, 'dist');
-
 /* Plugins */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+// Changing this value modifies the behaviour of the
+// devServer properties as well as webpack
+const target = 'node'; // ||'web'
+
+// Our default output directory
+// This is used by both webpack and the devServer
+const outputPath = path.resolve(__dirname, 'dist');
 
 /* Loaders */
 const babelLoader = {
@@ -16,14 +21,16 @@ const babelLoader = {
 
 /*
 Get command line arguments from webpack-cli to set the mode.
+These are passed in via the npm scripts
 --mode [development|production]
 */
 module.exports = (args, mode) => {
   return {
+    target,
     mode: mode,
     entry: './src/app.js',
     output: {
-      path: distributionDirectory,
+      path: outputPath,
       filename: 'bundle.js'
     },
     module: {
@@ -37,10 +44,10 @@ module.exports = (args, mode) => {
     },
     plugins: [new CleanWebpackPlugin()],
     devServer: {
-      contentBase: distributionDirectory,
+      cotentBase: outputPath,
       writeToDisk: true,
-      open: true,
-      index: 'index.html'
+      open: target === 'node' ? false : true,
+      index: target === 'node' ? '' : 'index.html'
     }
   };
 };

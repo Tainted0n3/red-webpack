@@ -11,8 +11,12 @@ const presets = [
 
 const plugins = [];
 
+// Hook into the Babel API
+// https://babeljs.io/docs/en/config-files#config-function-api
 module.exports = api => {
-  api.cache(true);
+  // https://babeljs.io/docs/en/config-files#apicache
+  api.cache.never();
+
   return {
     presets,
     plugins
