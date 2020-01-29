@@ -78,6 +78,12 @@ Build output is defaulted to `./dist`. All files are set to end up here with no 
 - This value is now stored in `const distributionDirectory`.
 - No filenames are currently hashed so no cache-busting by default. **STC**
 
+File extensions are auto matically resolved for particular files: [resolve.extensions](https://webpack.js.org/configuration/resolve/#resolveextensions). It resolves the follwoing extensions now by default.
+
+- `.mjs`
+- `.js`
+- `.json`
+
 ### Modules
 
 The only module installed and cofigured to run is `babel-loader`.
@@ -119,7 +125,10 @@ const presets = [
   [
     '@babel/preset-env',
     {
-      targets: '> 0.25%, not dead'
+      targets: {
+        browsers: ['last 2 versions', 'safari >= 7'],
+        node: '6.10'
+      }
     }
   ]
 ];

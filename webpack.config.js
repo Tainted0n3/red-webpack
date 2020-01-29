@@ -37,11 +37,12 @@ These are passed in via the npm scripts
 */
 module.exports = (args, options) => {
   const { mode } = options;
+
+  // Uses !== 'node' as web can also be specified as ''
   const isWeb = target !== 'node';
   const isProduction = mode === 'production';
 
   // Selectively add any plugin we need if we are targeting the web
-  // Uses !== 'node' as web can also be specified as ''
   if (isWeb) {
     plugins.push(
       new HtmlWebpackPlugin({
@@ -67,6 +68,11 @@ module.exports = (args, options) => {
     output: {
       path: outputPath,
       filename: 'bundle.js'
+    },
+    resolve: {
+      descriptionFiles: ['package.json'],
+      enforceExtension: false,
+      extensions: ['.mjs', '.js', '.json']
     },
     module: {
       rules: [

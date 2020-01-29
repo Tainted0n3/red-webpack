@@ -2,7 +2,10 @@ const presets = [
   [
     '@babel/preset-env',
     {
-      targets: '> 0.25%, not dead'
+      targets: {
+        browsers: ['last 2 versions', 'safari >= 7'],
+        node: '6.10'
+      }
     }
   ]
 ];
